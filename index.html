@@ -23,42 +23,33 @@
 <body>
 
 <h1 align="middle">CS 184: Computer Graphics and Imaging, Spring 2017</h1>
-<h1 align="middle">Fluid Simulation Project Proposal</h1>
+<h1 align="middle">Fluid Simulation Project Milestone Report</h1>
 <h2 align="middle">Team Members: Hubert Jung, Akshay Madhani</h2>
 <br>
 
 <div>
 
-<h2 align="left">Problem Description</h2>
+<h2 align="left">Current Progress</h2>
 <p>
-Fluids such as water are extremely common in our daily life and is present in a wide variety of scenes such as oceans, rain, or even simply cups of water. However, fluids are also extremely complex and challenging to realistically model because they are constructed of millions of tiny particles. In this project we will attempt to implement a position based model of fluids that enforces a constant density of particles.
+So far, we have implemented the basic physics of fluid particles (position, velocity, and acceleration) with Euler integration, and we have also added collisions between particles. In each time step, we update the velocity of each particle to be v = v + TIMESTEP * a, and the position to be x = x + TIMESTEP * v. We also adapted the code from our cloth simulation project for collisions between particles by readjusting the positions of particles if they get too close to each other. We have modeled our update code after the algorithm from Macklin and Muller's "Position Based Fluids":
 </p>
 
-<h2 align="left">Goals and Deliverables</h2>
-<p>
-<b>Baseline Goals </b>: <br>
-We want to be able to simulate realistic fluid particles by simulating the unique forces that affects fluids generally and water more specifically. Besides the general forces of gravity and water collisions, we want to create a model that takes into account properties such as incompressibility, vorticity, and viscosity. Incompressibility is the property of water that helps it keep a constant density; it means that, as water particles exert forces on each other, they move in general as a unit (not “squeezing” together and in general moving as a unit). We use vorticity confinement to add rotational energy to the particles; this tends to add a swaying motion to water particles which would normally come into a resting position after a perturbation. We also would like to simulate surface tension of the water; specifically, we want to simulate the force of the water on an object which falls into it from a height. We also want the particles to have viscosity, or thickness. For our deliverables, by the end of the project we should be able to simulate scenes such as opening a floodgate of water, and dropping an object into a container of water. 
- 
-<br> <br>
+<td align="middle">
+<img src="images/algo.png" width="300px" />
+</td>
 
-<b>Reach Goals</b>: <br>
-We would like to improve the performance of our code by moving it onto the GPU, and we could measure the speedup we get from the CPU vs the GPU. 
-<br> <br>
-As one of our more hopeful goals, we would hope to somehow understand how fluid surfaces are rendered; we got a chance to look at the technique of ellipsoid splattering, and it looks quite difficult to implement. The deliverable that would come out of this would be converting our particle motion simulation to a more realistic fluid motion.
-<br> <br>
-We also hoped to implement some of the more nuanced aspects of buoyancy and surface disturbances. An extension of our above deliverable for dropping an object into a container of water would be to play with the height from which the object is dropped and the mass of the object; a deliverable from this section would be to get a rendering of an object that drops into the water and then floats to the top.
-<br> <br>
-Another cool extension would be interactive surface disturbances such as creating ripples in a surface of water; for this, we would most definitely have to have a high amount of water particles due to the smaller granularity of the ripples; also, we would have to implement sinusoidal fluid wave motion.
+<p>Essentially, we have implemented lines 1-4 and line 14 of the algorithm above. We can currently simulate particles falling onto a surface, colliding with each other, and then spreading out. </p>
+
+<h2 align="left">Our Plan</h2>
+<p>
+Relative to the schedule we had layed out in our proposal, we have currently achieved the goal we had set for where we wanted to be 1 week into the project. This means that we are about 1 week behind schedule, so we need to speed up our progress. It also means that we are likely not going to be able to achieve our reach goals. By the end of this week we need to have implemented the full algorithm and reserve time to run simulations. 
 </p>
 
-<h2 align="left">Schedule</h2>
-<p>
-In the first week, we hope to implement a basic simulation of water particles in which the only force acting on them is gravity. By the second week, we would like to have implemented the full model and have some basic simulations in which we can see the effects of vorticity and viscosity. In the third week, we would like to finish our simulations such as an object dropping into water, and the opening of the floodgates. Afterwards, if possible we would like to try to implement the extensions such as rendering the particles to look like actual fluids. 
-</p>
+<h2 align="left">Video</h2>
+<a href="https://www.youtube.com/watch?v=vvPjCbdEXO0">A video showing our current progress.</a>
 
-<h2 align="left">Resources</h2>
-<p>
-One major resource will be <a href="http://mmacklin.com/pbf_sig_preprint.pdf">this article</a> by Miles Macklin and Matthias Müller on position based fluids. We will also likely need to review the articles referenced within that paper, as well as other online resources for some of the math. <a href="http://www.cs.rug.nl/~roe/publications/fluidcurvature.pdf">This paper</a>, <i> Screen Space Fluid Rendering with Curvature Flow </i> by Wladimir J. van der Laan, Simon Green, and Miguel Sainz describes a way to render the surface of particle based fluids. We should be running on Linux computers and with Nvidia GPUs. The code should be in C++ with OpenGL.
+<h2 align="left">Slides</h2>
+<a href="https://docs.google.com/presentation/d/1B2P_zsFkqzrsO_z43P4zcj6gLJysb1WIEcKzzfVhk8Q/edit#slide=id.p">Some slides.</a>
 
 </div>
 </body>
