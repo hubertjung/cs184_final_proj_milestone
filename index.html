@@ -29,16 +29,22 @@
 
 <div>
 
+<h2 align="left">Recapping the project and our goals</h2>
+<p>
+In this project we want to implement a position based model of fluids that enforces a constant density of particles. As our baseline goals, we wanted to be able to simulate  water collisions, incompressibility, vorticity, and viscosity. For our deliverables, by the end of the project we want to simulate scenes such as opening a floodgate of water, and dropping an object into a container of water. As one of our more hopeful goals, we wanted to somehow understand how fluid surfaces are rendered (perhaps with ellipsoid splattering). The deliverable that would come out of this would be converting our particle motion simulation to a more realistic fluid motion. We also thought that, as a reach goal, we might be able to simulate interactive surface disturbances such as creating ripples in a surface of water.
+
+</p>
+
 <h2 align="left">Current Progress</h2>
 <p>
-So far, we have implemented the basic physics of fluid particles (position, velocity, and acceleration) with Euler integration, and we have added collisions between particles. In each time step, we update the velocity of each particle to be v = v + TIMESTEP * a, and the position to be x = x + TIMESTEP * v. We also adapted the code from our cloth simulation project for collisions between particles by readjusting the positions of particles if they get too close to each other. We have modeled our update code after the algorithm from Macklin and Muller's "Position Based Fluids":
+So far, we have implemented the basic physics of fluid particles (position, velocity, and acceleration) with Euler integration, and we have added collisions between the particle and a plane and collisions with other particles. We adapted the code from our cloth simulation project for collisions between particles by readjusting the positions of particles if they get too close to each other. One of the big challenges was the lack of randomness in the starter code; this messed with the self-collision algorithm, as the particles didn’t spread out nicely but stopped mid-fall. We fixed this by increasing the particle “thickness” by a little to allow the particles to separate and by introducing some randomness in the positions. We have modeled our update code after the algorithm from Macklin and Muller's "Position Based Fluids":
 </p>
 
 <td align="middle">
 <img src="images/algo.png" width="300px" />
 </td>
 
-<p>Essentially, we have implemented lines 1-4 and line 14 of the algorithm above. We can currently simulate particles falling onto a surface, colliding with each other, and then spreading out. </p>
+<p>From this guideline, we still need to implement the incompressibility part of the above algorithm (finding lambda and changing the position accordingly); however, we are done with the outline and the basic physics from the algorithm. </p>
 
 <h2 align="left">Our Plan</h2>
 <p>
